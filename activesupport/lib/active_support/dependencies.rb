@@ -403,6 +403,9 @@ module ActiveSupport #:nodoc:
     # Is the provided constant path defined?
     def qualified_const_defined?(path)
       Object.const_defined?(path, false)
+    rescue NameError
+      # The constant name is not valid and therefore not valid 
+      false
     end
 
     # Given +path+, a filesystem path to a ruby file, return an array of
